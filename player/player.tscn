@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl2tlecx23cc3"]
+
+[ext_resource type="SpriteFrames" uid="uid://fiauxs5e8fuv" path="res://player/walk.tres" id="1_26tsw"]
+
+[node name="Player" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_26tsw")
+animation = &"down"

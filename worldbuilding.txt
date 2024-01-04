@@ -1,0 +1,145 @@
+COMBAT SYSTEM
+Turn-based, grid system
+4x5 grid
+Tiles can be impassable, discoverable?
+Modification of tiles due to elemental interactions
+2 Action Points per turn
+Turn order determined by readiness score, determined by speed
+Swapping orbs is an action
+---stats---
+Attack
+Technique
+Defense
+Armor
+Speed
+Elemental Resonances (5)
+ - stats given by levelup, equipped items, and orbs
+ - levelup stats determined by random probability based on orbs used
+ - extra stats given for player to determine?
+
+---anima---
+'anima' used for attacks/techniques
+anima is universal, held in pool
+tiles produce anima (15 types)
+ - production based on position in chart
+ - tile type shown in chart
+ - upper triangular only, since they're reciprocal
+	Earth	Air	Fire	Water	Aether
+Earth	Ground	Grass	Magma	Mud	Flowers
+Air		Wind?	Desert	Fog	Pollen
+Fire			Lava	Vents	Tropics
+Water				Pool	Lilypond
+Aether					Garden
+---stat buffs---
+Pokemon style
+ - six stages in either direction
+ - stages add/subtract 50%
+---elemental attributes---
+Air
+ - speed, tech
+ - emphasis on increasing speed and ap
+ - weak on def, armor, attack
+ - Buff: Breath, adds an AP
+ - Debuff: Short, removes an AP
+Earth
+ - armor, attack
+ - emphasis on tanking attacks
+ - strong melee and weaker ranged (but ranged attacks hit everything)
+ - weak on speed, tech
+ - Buff: Rock Wall, halves damage of next attack
+ - Debuff: Rot, damage based on health
+Fire
+ - attack, speed
+ - emphasis on damage, damage over time
+ - glass cannon
+ - straight line damage, no true range
+ - weak on tech, defense, armor
+ - Buff: 
+ - Debuff: Burn, damage based on attack
+Water
+ - tech, defense
+ - emphasis on shifting environment
+ - modification of tiles?
+ - no real weaknesses
+ - Buff: Swim, move faster on water tiles
+ - Debuff: Chill, removes color from generated anima
+Aether
+ - no strengths or weaknesses
+ - emphasis on healing
+ - support style tone
+ - Buff: Growth, adds extra generated anima
+ - Debuff: Block, blocks healing
+---move types---
+Moves are affected by elemental resonances/harmonics
+ - Multipliers for damage/healing
+ - Having certain levels of resonance gives extra abilities
+ - Can't use moves without certain resonance levels
+Aria
+ - Primarily generation of anima
+Symphony
+ - Damage dealing
+Dirge
+ - Status effects, usually debuffs
+Anthem
+ - Status effects, usually buffs
+Sonata
+ - Healing
+
+OVERWORLD MOVEMENT
+Orbs equipped give abilities
+Orbs with multiple harmonies give multiple abilities
+Water
+ - Swimming
+Air
+ - Jumping over gaps
+Fire
+ - Don't take damage in hot areas
+Earth
+ - Rock smashing
+Aether
+ - Vine growth up walls
+ORBS
+Five possible equipped, with one as active orb
+ - Active orb goes first in battle
+Can have effects on swap in/out
+Up to four moves, with move type fixed
+Harmonics are given for each orb type
+ - each point of harmonic interacts with player resonance for damage/healing output
+EQUIPMENT
+mostly for stat modification
+possible modification of AP?
+bonus readiness at start of battle?
+Five slots
+Left Arm
+ - Artifact-y stuff
+ - defense, resonance
+Right Arm
+ - Rings?
+ - attack, tech, resonance
+Chest
+ - Armor and such
+ - armor, defense, possibly tech
+Head
+ - Helmets, corslets, the like
+ - resonance, defense, armor
+Feet
+ - Shoes, duh
+ - speed, defense, armor
+WORLD
+Map given in the map file
+Center of map inside of mountain ring is boss tower
+Boss tower leads downward underground to earth orb
+Places are unlocked in mission acceptance, persist afterward
+These change from playthrough to playthrough
+ - story critical points don't change, fixed to map
+No nonhuman sentient races
+Wildlife is earth-like for area
+ - Mystical creatures are 100% Shardforms
+Underlying tiles for combat set by environment
+Baddies are shown on overworld, Earthbound-style
+BADDIES
+Mostly Shardform in the beginning
+Training is friendly fights with other ranger recruits
+Bandits on missions?
+Ascetic monks on missions occasionally
+Once Shardform missions are passed, minion espers
