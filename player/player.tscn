@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl2tlecx23cc3"]
+[gd_scene load_steps=3 format=3 uid="uid://bl2tlecx23cc3"]
 
 [ext_resource type="SpriteFrames" uid="uid://fiauxs5e8fuv" path="res://player/walk.tres" id="1_26tsw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njmis"]
+size = Vector2(16, 10)
 
 [node name="Player" type="Area2D"]
 metadata/_edit_group_ = true
@@ -8,3 +11,10 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_26tsw")
 animation = &"down"
+frame = 3
+frame_progress = 0.437136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(-0.9, -0.5)
+shape = SubResource("RectangleShape2D_njmis")
