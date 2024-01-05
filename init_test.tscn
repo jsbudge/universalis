@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://5yniqpj3nkge"]
+
+[ext_resource type="PackedScene" uid="uid://bl2tlecx23cc3" path="res://player/player.tscn" id="1_vjum4"]
+[ext_resource type="PackedScene" uid="uid://h15hau4gea17" path="res://assets/overworld.tscn" id="2_c4l10"]
+
+[node name="InitTest" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_vjum4")]
+
+[node name="overworld" parent="." instance=ExtResource("2_c4l10")]
