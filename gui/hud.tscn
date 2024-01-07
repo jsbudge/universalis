@@ -26,7 +26,6 @@ texture_progress = ExtResource("2_v7rdn")
 tint_under = Color(0.972549, 0.027451, 0.486275, 1)
 
 [node name="OrbDisplay" type="TextureRect" parent="."]
-anchors_preset = -1
 offset_left = 9.0
 offset_top = 177.0
 offset_right = 49.0
