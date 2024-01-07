@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5yniqpj3nkge"]
+[gd_scene load_steps=7 format=3 uid="uid://5yniqpj3nkge"]
 
 [ext_resource type="Script" path="res://init_test.gd" id="1_cl3e6"]
 [ext_resource type="PackedScene" uid="uid://bl2tlecx23cc3" path="res://player/player.tscn" id="1_vjum4"]
 [ext_resource type="PackedScene" uid="uid://h15hau4gea17" path="res://assets/overworld.tscn" id="2_c4l10"]
 [ext_resource type="PackedScene" uid="uid://3fxrv5lq1ap6" path="res://gui/hud.tscn" id="4_axph7"]
 [ext_resource type="PackedScene" uid="uid://b5uw7vee6ih22" path="res://assets/crystal.tscn" id="5_hgdwg"]
+[ext_resource type="PackedScene" uid="uid://4xoffiegotwe" path="res://enemy/enemy.tscn" id="6_dmfie"]
 
 [node name="InitTest" type="Node"]
 script = ExtResource("1_cl3e6")
@@ -22,5 +23,8 @@ layer_1/tile_data = PackedInt32Array(1048616, 1441792, 9, 1114152, 1441792, 10, 
 
 [node name="Crystal" parent="." instance=ExtResource("5_hgdwg")]
 position = Vector2(485, 303)
+
+[node name="Enemy" parent="." instance=ExtResource("6_dmfie")]
+position = Vector2(505, 232)
 
 [connection signal="hp_change" from="Player" to="HUD" method="_update_healthbar"]
