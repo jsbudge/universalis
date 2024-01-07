@@ -1,23 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl2tlecx23cc3"]
+[gd_scene load_steps=12 format=3 uid="uid://bl2tlecx23cc3"]
 
 [ext_resource type="SpriteFrames" uid="uid://fiauxs5e8fuv" path="res://player/walk.tres" id="1_26tsw"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j6vxf"]
+[ext_resource type="Script" path="res://player/overworldbodygd.gd" id="2_xcg5h"]
+[ext_resource type="Texture2D" uid="uid://f4ed85fmrv6x" path="res://assets/objects.png" id="4_3p8co"]
+[ext_resource type="Script" path="res://player/ReactionBubble.gd" id="5_npkd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njmis"]
 size = Vector2(16, 10)
 
-[node name="Player" type="Area2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5sgi"]
+atlas = ExtResource("4_3p8co")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq3hk"]
+atlas = ExtResource("4_3p8co")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6suid"]
+atlas = ExtResource("4_3p8co")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ho1"]
+atlas = ExtResource("4_3p8co")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ht3jk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5sgi")
+}],
+"loop": false,
+"name": &"exclamation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq3hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6suid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ho1")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
 script = ExtResource("1_j6vxf")
+
+[node name="OverworldBody" type="CharacterBody2D" parent="."]
+script = ExtResource("2_xcg5h")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OverworldBody"]
 sprite_frames = ExtResource("1_26tsw")
-animation = &"right"
+animation = &"jump"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldBody"]
 position = Vector2(0, 8)
 rotation = -3.14159
 scale = Vector2(0.9, 0.5)
 shape = SubResource("RectangleShape2D_njmis")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="OverworldBody"]
+
+[node name="ReactionBubble" type="AnimatedSprite2D" parent="OverworldBody"]
+visible = false
+position = Vector2(2, -20)
+sprite_frames = SubResource("SpriteFrames_ht3jk")
+animation = &"exclamation"
+script = ExtResource("5_npkd5")
+
+[connection signal="react" from="." to="OverworldBody/ReactionBubble" method="_on_player_react"]
+[connection signal="collision" from="OverworldBody" to="." method="_on_overworld_body_collision"]
+[connection signal="animation_finished" from="OverworldBody/ReactionBubble" to="OverworldBody/ReactionBubble" method="_on_animation_finished"]

@@ -1,36 +1,20 @@
-extends Area2D
+extends Node2D
 
-@export var speed = 80 # Speed of the player (pixels/sec)
-var screen_size
+signal hp_change
+signal react
+
+var hp = 100
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
+	emit_signal("hp_change", 0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+	pass
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-	if velocity.x > 0:
-		$AnimatedSprite2D.animation = "right"
-	elif velocity.x < 0:
-		$AnimatedSprite2D.animation = "left"
-	elif velocity.y < 0:
-		$AnimatedSprite2D.animation = "up"
-	else:
-		$AnimatedSprite2D.animation = "down"
+
+func _on_overworld_body_collision():
+	emit_signal("hp_change", -1)
+	emit_signal("react")
