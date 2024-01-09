@@ -1,6 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://4xoffiegotwe"]
+[gd_scene load_steps=22 format=3 uid="uid://4xoffiegotwe"]
 
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_tj3x0"]
 [ext_resource type="Texture2D" uid="uid://gtwgm4gxmgoh" path="res://assets/overworld_creature.png" id="1_u5a2d"]
+[ext_resource type="Script" path="res://enemy/OverworldBody.gd" id="2_fit1h"]
+[ext_resource type="Script" path="res://enemy/ViewArea.gd" id="4_leb3u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5eqjf"]
 radius = 5.0
@@ -111,9 +114,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nocl7"]
+radius = 24.2521
+
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_tj3x0")
 
 [node name="OverworldBody" type="CharacterBody2D" parent="."]
+script = ExtResource("2_fit1h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldBody"]
 shape = SubResource("CircleShape2D_5eqjf")
@@ -124,3 +132,16 @@ scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_vey5l")
 autoplay = "default"
 frame_progress = 0.00153908
+
+[node name="ViewArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_leb3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewArea"]
+scale = Vector2(5.28, 5.16)
+shape = SubResource("CircleShape2D_nocl7")
+
+[connection signal="motion" from="." to="OverworldBody" method="_on_enemy_motion"]
+[connection signal="area_shape_entered" from="ViewArea" to="." method="_on_view_area_shape_entered"]
+[connection signal="area_shape_exited" from="ViewArea" to="." method="_on_view_area_shape_exited"]

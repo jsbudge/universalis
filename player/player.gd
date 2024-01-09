@@ -4,6 +4,10 @@ signal hp_change
 signal react
 
 var hp = 100
+var equipment = Array[5]
+var orbs = Array[5]
+var stats = Array[5]
+var modifiers = Array[5]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

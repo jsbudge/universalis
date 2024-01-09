@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl2tlecx23cc3"]
+[gd_scene load_steps=13 format=3 uid="uid://bl2tlecx23cc3"]
 
 [ext_resource type="SpriteFrames" uid="uid://fiauxs5e8fuv" path="res://player/walk.tres" id="1_26tsw"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j6vxf"]
 [ext_resource type="Script" path="res://player/overworldbodygd.gd" id="2_xcg5h"]
 [ext_resource type="Texture2D" uid="uid://f4ed85fmrv6x" path="res://assets/objects.png" id="4_3p8co"]
 [ext_resource type="Script" path="res://player/ReactionBubble.gd" id="5_npkd5"]
+[ext_resource type="PackedScene" uid="uid://baw5xg68ho2h" path="res://assets/inventory_handler.tscn" id="6_sltgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njmis"]
 size = Vector2(16, 10)
@@ -54,6 +55,7 @@ animations = [{
 script = ExtResource("1_j6vxf")
 
 [node name="OverworldBody" type="CharacterBody2D" parent="."]
+collision_layer = 3
 script = ExtResource("2_xcg5h")
 metadata/_edit_group_ = true
 
@@ -75,6 +77,8 @@ position = Vector2(2, -20)
 sprite_frames = SubResource("SpriteFrames_ht3jk")
 animation = &"exclamation"
 script = ExtResource("5_npkd5")
+
+[node name="InventoryHandler" parent="." instance=ExtResource("6_sltgv")]
 
 [connection signal="react" from="." to="OverworldBody/ReactionBubble" method="_on_player_react"]
 [connection signal="collision" from="OverworldBody" to="." method="_on_overworld_body_collision"]

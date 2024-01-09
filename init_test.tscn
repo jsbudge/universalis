@@ -25,6 +25,7 @@ layer_1/tile_data = PackedInt32Array(1048616, 1441792, 9, 1114152, 1441792, 10, 
 position = Vector2(485, 303)
 
 [node name="Enemy" parent="." instance=ExtResource("6_dmfie")]
+visibility_layer = 3
 position = Vector2(505, 232)
 
 [connection signal="hp_change" from="Player" to="HUD" method="_update_healthbar"]
