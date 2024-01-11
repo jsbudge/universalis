@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf2jox2b8s2de"]
+
+[ext_resource type="Script" path="res://inventory_ui/InventoryHandler.gd" id="1_v5w2n"]
+[ext_resource type="PackedScene" uid="uid://chiqbu20hbb26" path="res://inventory_ui/inventory_ui.tscn" id="2_feikp"]
+
+[node name="InventoryHandler" type="Node"]
+script = ExtResource("1_v5w2n")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Inventory" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerInventory" parent="UI/Inventory" instance=ExtResource("2_feikp")]
+layout_mode = 0

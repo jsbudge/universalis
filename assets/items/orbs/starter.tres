@@ -9,9 +9,9 @@ region = Rect2(64, 96, 32, 32)
 
 [resource]
 script = ExtResource("1_ytbvg")
-name = ""
+name = "Starter"
 texture = SubResource("AtlasTexture_xupin")
-description = ""
+description = "Basic orb."
 harmonics = Array[int]([])
 stat_modifiers = Array[int]([])
 move_types = Array[int]([])

@@ -3,7 +3,7 @@ extends Resource
 class_name Orb
 
 @export var name: String
-@export var texture: Texture2D
+@export var texture: AtlasTexture
 @export var description: String
 @export var harmonics: Array[int]
 @export var stat_modifiers: Array[int]

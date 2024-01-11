@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8xq24qst04ps"]
+[gd_scene load_steps=3 format=3 uid="uid://c8xq24qst04ps"]
 
+[ext_resource type="Script" path="res://inventory_ui/slot.gd" id="1_dg7j6"]
 [ext_resource type="Texture2D" uid="uid://bmkuf8jenv43g" path="res://icon.svg" id="1_vbwd6"]
 
 [node name="Slot" type="PanelContainer"]
@@ -10,6 +11,7 @@ offset_right = -448.0
 offset_bottom = -208.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dg7j6")
 
 [node name="PanelContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -22,3 +24,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 texture = ExtResource("1_vbwd6")
 expand_mode = 1
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
