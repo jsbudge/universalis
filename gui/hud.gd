@@ -8,9 +8,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if ActivePlayer.player_data.hp != $HUDDisplay/PlayerHealth.value:
+		$HUDDisplay/PlayerHealth.value = ActivePlayer.player_data.hp
 
 
-func _update_healthbar(change):
-	print("Started to %f" % $PlayerHealth.value)
-	$PlayerHealth.value += change
+func _on_player_interactable(run: bool):
+	if run:
+		$InteractionPossible.visible = true
+		$InteractionPossible/AnimatedSprite2D.play()
+	else:
+		$InteractionPossible.visible = false
+		$InteractionPossible/AnimatedSprite2D.stop()

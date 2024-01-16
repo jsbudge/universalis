@@ -11,5 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_area_entered(area):
-	visible = false
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	# visible = false
+	ActivePlayer.player_data.shards += num
+	queue_free()

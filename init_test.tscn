@@ -1,18 +1,78 @@
-[gd_scene load_steps=7 format=3 uid="uid://5yniqpj3nkge"]
+[gd_scene load_steps=21 format=3 uid="uid://5yniqpj3nkge"]
 
 [ext_resource type="Script" path="res://init_test.gd" id="1_cl3e6"]
 [ext_resource type="PackedScene" uid="uid://bl2tlecx23cc3" path="res://player/player.tscn" id="1_vjum4"]
 [ext_resource type="PackedScene" uid="uid://h15hau4gea17" path="res://assets/overworld.tscn" id="2_c4l10"]
 [ext_resource type="PackedScene" uid="uid://3fxrv5lq1ap6" path="res://gui/hud.tscn" id="4_axph7"]
-[ext_resource type="PackedScene" uid="uid://b5uw7vee6ih22" path="res://assets/crystal.tscn" id="5_hgdwg"]
+[ext_resource type="Script" path="res://assets/crystal.gd" id="4_whty7"]
+[ext_resource type="Texture2D" uid="uid://7qvyn3jud0vf" path="res://assets/crystal.png" id="5_b3awt"]
 [ext_resource type="PackedScene" uid="uid://4xoffiegotwe" path="res://enemy/enemy.tscn" id="6_dmfie"]
+[ext_resource type="Script" path="res://assets/treasure_chest.gd" id="7_erp3x"]
+[ext_resource type="Texture2D" uid="uid://dj6kvx3ed3wke" path="res://assets/RGW_Chests.png" id="8_crcgn"]
+[ext_resource type="PackedScene" uid="uid://boslbvaem4idu" path="res://main_menu.tscn" id="10_sv58m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdywc"]
+radius = 4.47214
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7au51"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc31m"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uuan"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwhbx"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ws2"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbi0v"]
+atlas = ExtResource("5_b3awt")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y0nj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7au51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc31m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uuan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwhbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46ws2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbi0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gtcm"]
+atlas = ExtResource("8_crcgn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgq5y"]
+size = Vector2(15, 10)
 
 [node name="InitTest" type="Node"]
 script = ExtResource("1_cl3e6")
-
-[node name="Player" parent="." instance=ExtResource("1_vjum4")]
-y_sort_enabled = true
-position = Vector2(576, 324)
 
 [node name="overworld" parent="." instance=ExtResource("2_c4l10")]
 position = Vector2(3, 0)
@@ -21,11 +81,43 @@ layer_1/tile_data = PackedInt32Array(1048616, 1441792, 9, 1114152, 1441792, 10, 
 
 [node name="HUD" parent="." instance=ExtResource("4_axph7")]
 
-[node name="Crystal" parent="." instance=ExtResource("5_hgdwg")]
+[node name="MainMenu" parent="HUD" instance=ExtResource("10_sv58m")]
+visible = false
+
+[node name="Crystal" type="Area2D" parent="."]
 position = Vector2(485, 303)
+collision_layer = 3
+script = ExtResource("4_whty7")
+num = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crystal"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_fdywc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crystal"]
+sprite_frames = SubResource("SpriteFrames_5y0nj")
 
 [node name="Enemy" parent="." instance=ExtResource("6_dmfie")]
 visibility_layer = 3
 position = Vector2(505, 232)
 
-[connection signal="hp_change" from="Player" to="HUD" method="_update_healthbar"]
+[node name="TreasureChest" type="Area2D" parent="."]
+position = Vector2(578, 362)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("7_erp3x")
+gold = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="TreasureChest"]
+texture = SubResource("AtlasTexture_4gtcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_xgq5y")
+
+[node name="Player" parent="." instance=ExtResource("1_vjum4")]
+
+[connection signal="inventory_start" from="HUD/MainMenu" to="." method="_on_main_menu_inventory_start"]
+[connection signal="area_entered" from="Crystal" to="Crystal" method="_on_area_entered"]
+[connection signal="body_shape_entered" from="Crystal" to="Crystal" method="_on_body_shape_entered"]
+[connection signal="interactable" from="Player" to="HUD" method="_on_player_interactable"]

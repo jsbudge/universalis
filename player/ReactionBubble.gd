@@ -11,10 +11,10 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_player_react():
-	visible = true
-	play()
-	
 func _on_animation_finished():
 	visible = false
+
+
+func _on_overworld_player_react():
+	visible = true
+	play()

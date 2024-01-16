@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://bjx2brxuotvka"]
+
+[ext_resource type="Script" path="res://player_data.gd" id="1_bc76o"]
+[ext_resource type="Resource" uid="uid://d1h8c8lyj8ayq" path="res://player/test_inv.tres" id="1_eyhf2"]
+[ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="2_2xc0m"]
+[ext_resource type="Texture2D" uid="uid://m7vr8bcm732o" path="res://assets/orbs_detail.tres" id="3_ogns1"]
+
+[sub_resource type="Resource" id="Resource_ssebt"]
+script = ExtResource("2_2xc0m")
+name = "Starter"
+texture = ExtResource("3_ogns1")
+description = "Basic starter orb."
+harmonics = Array[int]([])
+stat_modifiers = Array[int]([])
+move_types = Array[int]([])
+moves = []
+quantity = 1
+
+[resource]
+script = ExtResource("1_bc76o")
+inventory = ExtResource("1_eyhf2")
+hp = 100
+equipped = Array[Resource("res://assets/items/accessories/equip_base.gd")]([])
+ready_orbs = Array[ExtResource("2_2xc0m")]([null, null, SubResource("Resource_ssebt"), null, null])
+stats = Array[int]([])
+modifiers = Array[float]([])
+gold = 0
+shards = 0

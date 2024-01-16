@@ -1,5 +1,6 @@
-class_name InventoryDatabase extends Resource
+extends Resource
+class_name InventoryDatabase
 
-@export var OrbList: Array[Orb]
-@export var EquipList: Array[Equipment]
-@export var ConsumableList: Array[Item]
+@export var OrbList: Array[SlotData]
+@export var EquipList: Array[SlotData]
+@export var ConsumableList: Array[SlotData]

@@ -1,9 +1,10 @@
-extends Resource
+extends SlotData
 
-class_name Item
+class_name ItemData
 
-@export var name: String
-@export var texture: Texture2D
-@export var description: String
+@export var name: String = ""
+@export var texture: AtlasTexture
+@export_multiline var description: String = ""
+@export var id: int
 @export var amount: int
 @export var effect: int

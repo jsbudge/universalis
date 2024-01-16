@@ -1,33 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://3fxrv5lq1ap6"]
+[gd_scene load_steps=8 format=3 uid="uid://3fxrv5lq1ap6"]
 
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_fgo6g"]
 [ext_resource type="Texture2D" uid="uid://bap5rxrndtx22" path="res://assets/hud.png" id="1_tfjlr"]
 [ext_resource type="Texture2D" uid="uid://bldvgf7medvn3" path="res://assets/healthbar.png" id="2_v7rdn"]
+[ext_resource type="Texture2D" uid="uid://bxfhi8oiy1naa" path="res://assets/input_buttons.png" id="4_ywr6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qugw"]
+atlas = ExtResource("4_ywr6n")
+region = Rect2(136, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dkce"]
+atlas = ExtResource("4_ywr6n")
+region = Rect2(136, 17, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6sp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qugw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dkce")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_fgo6g")
 
 [node name="HUDDisplay" type="TextureRect" parent="."]
-offset_left = 1.0
-offset_top = 171.0
-offset_right = 84.0
-offset_bottom = 226.0
+offset_left = 3.0
+offset_top = 456.0
+offset_right = 86.0
+offset_bottom = 511.0
 scale = Vector2(1.32934, 1.23985)
 texture = ExtResource("1_tfjlr")
 
-[node name="PlayerHealth" type="TextureProgressBar" parent="."]
-offset_left = 36.0
-offset_top = 222.0
-offset_right = 105.0
-offset_bottom = 226.0
-scale = Vector2(1.30647, 1.63911)
+[node name="PlayerHealth" type="TextureProgressBar" parent="HUDDisplay"]
+layout_mode = 0
+offset_left = 26.3289
+offset_top = 41.134
+offset_right = 95.3289
+offset_bottom = 45.134
+scale = Vector2(1.00557, 1.63911)
 value = 100.0
 texture_progress = ExtResource("2_v7rdn")
 tint_under = Color(0.972549, 0.027451, 0.486275, 1)
 
-[node name="OrbDisplay" type="TextureRect" parent="."]
-offset_left = 9.0
-offset_top = 177.0
-offset_right = 49.0
-offset_bottom = 217.0
+[node name="OrbDisplay" type="TextureRect" parent="HUDDisplay"]
+layout_mode = 0
+offset_left = 3.76126
+offset_top = 3.2262
+offset_right = 43.7613
+offset_bottom = 43.2262
 scale = Vector2(0.609477, 0.579833)
+
+[node name="InteractionPossible" type="TextureRect" parent="."]
+offset_left = 57.0
+offset_top = 456.0
+offset_right = 97.0
+offset_bottom = 496.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InteractionPossible"]
+position = Vector2(19, 26)
+sprite_frames = SubResource("SpriteFrames_s6sp4")

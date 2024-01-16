@@ -1,4 +1,4 @@
-extends Resource
+extends SlotData
 
 class_name Orb
 
