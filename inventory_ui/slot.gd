@@ -4,7 +4,7 @@ extends PanelContainer
 @onready var quantity_label = $QuantityLabel
 
 func set_slot_data(i: SlotData) -> void:
-	i.texture = i.texture
+	texture_rect = i.texture
 	tooltip_text = "%s\n%s" % [i.name, i.description]
 	
 	if i.is_stackable:

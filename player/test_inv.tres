@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_86mvc")
-OrbList = Array[Resource("res://inventory_ui/slot_data.gd")]([ExtResource("3_e64a3"), null, null, ExtResource("3_e64a3"), null, null, null, ExtResource("3_e64a3"), null, null, null, null, null, null, null, null, null, null, ExtResource("3_e64a3"), null, null, null, null, null, null, null, null, null, null, null])
+OrbList = Array[Resource("res://inventory_ui/slot_data.gd")]([ExtResource("3_e64a3"), null, null, ExtResource("3_e64a3"), null, null, null, ExtResource("3_e64a3"), null, null, null, null, null, null, null, null, null, null, ExtResource("3_e64a3"), null, null, null, null, null, null])
 EquipList = Array[Resource("res://inventory_ui/slot_data.gd")]([])
 ConsumableList = Array[Resource("res://inventory_ui/slot_data.gd")]([])
