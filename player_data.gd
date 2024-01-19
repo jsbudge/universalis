@@ -10,3 +10,4 @@ class_name PlayerData
 @export var modifiers: Array[float]
 @export var gold: int
 @export var shards: int
+@export var active_orb: int = 0

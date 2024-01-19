@@ -9,11 +9,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("open_inventory"):
 		$HUD/InventoryUI.visible = not $HUD/InventoryUI.visible
+		$GameScene.process_mode = Node.PROCESS_MODE_DISABLED if $HUD/InventoryUI.visible else Node.PROCESS_MODE_ALWAYS
 	elif Input.is_action_just_pressed("open_menu"):
 		$HUD/MainMenu.visible = not $HUD/MainMenu.visible
-		
-
-
-func _on_main_menu_inventory_start():
-	var inv_scene = preload("res://assets/inventory_handler.tscn")
-	get_tree().change_scene_to_packed(inv_scene)
+		$GameScene.process_mode = Node.PROCESS_MODE_DISABLED if $HUD/MainMenu.visible else Node.PROCESS_MODE_ALWAYS

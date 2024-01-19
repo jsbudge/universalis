@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://q3cmtkhsiwxk"]
+
+[ext_resource type="Script" path="res://assets/items/accessories/equip_base.gd" id="1_0dlr1"]
+[ext_resource type="Texture2D" uid="uid://bduhvorv4q5n8" path="res://assets/fullset.tres" id="2_s35vx"]
+
+[resource]
+script = ExtResource("1_0dlr1")
+name = "Test Helmet"
+texture = ExtResource("2_s35vx")
+description = "A testy helmet."
+harmonics = Array[int]([])
+stat_modifiers = Array[int]([])
+slot = 0
+quantity = 1

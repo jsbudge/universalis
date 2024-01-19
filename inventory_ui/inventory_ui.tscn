@@ -1,12 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://chiqbu20hbb26"]
+[gd_scene load_steps=3 format=3 uid="uid://chiqbu20hbb26"]
 
 [ext_resource type="Script" path="res://inventory_ui/inventory_ui.gd" id="1_45i6y"]
+[ext_resource type="Script" path="res://inventory_ui/inventory_control.gd" id="1_wsnv8"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 480.0
 offset_bottom = 600.0
+script = ExtResource("1_wsnv8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0901961, 0.0901961, 1)
 
 [node name="InventoryUI" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -21,9 +32,11 @@ script = ExtResource("1_45i6y")
 [node name="TabBar" type="TabBar" parent="InventoryUI"]
 layout_mode = 2
 size_flags_vertical = 0
+select_with_rmb = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="InventoryUI"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="ItemList" type="GridContainer" parent="InventoryUI/ItemContainer"]
 layout_mode = 2
@@ -34,3 +47,15 @@ columns = 5
 layout_mode = 2
 size_flags_vertical = 10
 columns = 5
+
+[node name="PopupMenu" type="PopupMenu" parent="InventoryUI"]
+
+[node name="Button" type="Button" parent="InventoryUI/PopupMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="InventoryUI/PopupMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="tab_changed" from="InventoryUI/TabBar" to="InventoryUI" method="_on_tab_bar_tab_changed"]

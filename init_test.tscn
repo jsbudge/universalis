@@ -124,7 +124,6 @@ shape = SubResource("RectangleShape2D_xgq5y")
 
 [node name="Player" parent="GameScene" instance=ExtResource("1_vjum4")]
 
-[connection signal="inventory_start" from="HUD/MainMenu" to="." method="_on_main_menu_inventory_start"]
 [connection signal="area_entered" from="GameScene/Crystal" to="GameScene/Crystal" method="_on_area_entered"]
 [connection signal="body_shape_entered" from="GameScene/Crystal" to="GameScene/Crystal" method="_on_body_shape_entered"]
 [connection signal="interactable" from="GameScene/Player" to="HUD" method="_on_player_interactable"]

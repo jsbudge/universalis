@@ -22,3 +22,18 @@ func addInventory(i):
 				e = i
 			elif e.id == i.id:
 				e.amount += i.amount
+				
+func setActiveOrb(i: int):
+	player_data.active_orb = i
+	
+func equip(i: Equipment):
+	var e_slot = i.slot
+	if player_data.equipped[e_slot]:
+		player_data.inventory.EquipList.append(player_data.equipped[e_slot])
+	player_data.equipped[e_slot] = i
+		
+func readyOrb(i: Orb, slot_num: int):
+	if player_data.ready_orbs[slot_num]:
+		player_data.inventory.OrbList.append(player_data.ready_orbs[slot_num])
+	player_data.ready_orbs[slot_num] = i
+		

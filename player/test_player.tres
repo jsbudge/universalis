@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://bjx2brxuotvka"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=7 format=3 uid="uid://bjx2brxuotvka"]
 
 [ext_resource type="Script" path="res://player_data.gd" id="1_bc76o"]
 [ext_resource type="Resource" uid="uid://d1h8c8lyj8ayq" path="res://player/test_inv.tres" id="1_eyhf2"]
+[ext_resource type="Resource" uid="uid://q3cmtkhsiwxk" path="res://assets/items/accessories/helmet.tres" id="1_kmyq1"]
 [ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="2_2xc0m"]
 [ext_resource type="Texture2D" uid="uid://m7vr8bcm732o" path="res://assets/orbs_detail.tres" id="3_ogns1"]
 
@@ -20,9 +21,10 @@ quantity = 1
 script = ExtResource("1_bc76o")
 inventory = ExtResource("1_eyhf2")
 hp = 100
-equipped = Array[Resource("res://assets/items/accessories/equip_base.gd")]([])
+equipped = Array[Resource("res://assets/items/accessories/equip_base.gd")]([ExtResource("1_kmyq1"), null, null, null, null])
 ready_orbs = Array[ExtResource("2_2xc0m")]([null, null, SubResource("Resource_ssebt"), null, null])
-stats = Array[int]([])
-modifiers = Array[float]([])
+stats = Array[int]([0, 0, 0, 0, 0])
+modifiers = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0])
 gold = 0
 shards = 0
+active_orb = 0
