@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.0901961, 0.0901961, 1)
+color = Color(0, 0.745098, 0.745098, 1)
 
 [node name="InventoryUI" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -40,7 +40,7 @@ size_flags_vertical = 4
 
 [node name="ItemList" type="GridContainer" parent="InventoryUI/ItemContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 columns = 5
 
 [node name="InfoPanel" type="GridContainer" parent="InventoryUI/ItemContainer"]
@@ -58,4 +58,5 @@ offset_bottom = 8.0
 offset_right = 8.0
 offset_bottom = 8.0
 
+[connection signal="mouse_entered" from="InventoryUI" to="InventoryUI" method="_on_mouse_entered"]
 [connection signal="tab_changed" from="InventoryUI/TabBar" to="InventoryUI" method="_on_tab_bar_tab_changed"]

@@ -143,5 +143,5 @@ scale = Vector2(5.28, 5.16)
 shape = SubResource("CircleShape2D_nocl7")
 
 [connection signal="motion" from="." to="OverworldBody" method="_on_enemy_motion"]
-[connection signal="area_shape_entered" from="ViewArea" to="." method="_on_view_area_shape_entered"]
-[connection signal="area_shape_exited" from="ViewArea" to="." method="_on_view_area_shape_exited"]
+[connection signal="body_entered" from="ViewArea" to="." method="_on_view_area_body_entered"]
+[connection signal="body_exited" from="ViewArea" to="." method="_on_view_area_body_exited"]

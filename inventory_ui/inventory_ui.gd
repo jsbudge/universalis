@@ -51,3 +51,10 @@ func _on_tab_bar_tab_changed(tab):
 			child.queue_free()
 		info_panel.visible = false
 	info_panel.grab_focus()
+
+
+func _on_mouse_entered():
+	for child in get_children():
+		if child.has_method("highlight"):
+			if child.get_rect().has_point(get_local_mouse_position()):
+				child.highlight()
