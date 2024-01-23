@@ -23,6 +23,7 @@ func populate_item_grid(slot_data: Array[SlotData]) -> void:
 		var slot = Slot.instantiate()
 		if sd:
 			slot.set_slot_data(sd)
+			# slot.connect("swap_data", )
 		orb_grid.add_child(slot)
 			
 func populate_info_panel(slot_data: Array) -> void:
