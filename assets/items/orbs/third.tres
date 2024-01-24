@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Orb" load_steps=4 format=3 uid="uid://biqgx6b0v31me"]
+
+[ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="1_d7b2g"]
+[ext_resource type="Texture2D" uid="uid://co5q3y8i3qdwd" path="res://assets/orbs_detail.png" id="2_13h1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btn54"]
+atlas = ExtResource("2_13h1p")
+region = Rect2(32, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_d7b2g")
+name = "Third"
+texture = SubResource("AtlasTexture_btn54")
+description = "The Third Orb."
+harmonics = Array[int]([])
+stat_modifiers = Array[int]([])
+move_types = Array[int]([])
+moves = []
+quantity = 1

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Orb" load_steps=4 format=3 uid="uid://dft0vyfeuounc"]
+
+[ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="1_b0foq"]
+[ext_resource type="Texture2D" uid="uid://co5q3y8i3qdwd" path="res://assets/orbs_detail.png" id="2_h51pr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51xs5"]
+atlas = ExtResource("2_h51pr")
+region = Rect2(96, 96, 32, 32)
+
+[resource]
+script = ExtResource("1_b0foq")
+name = "Light Ball"
+texture = SubResource("AtlasTexture_51xs5")
+description = "A ball of light."
+harmonics = Array[int]([])
+stat_modifiers = Array[int]([])
+move_types = Array[int]([])
+moves = []
+quantity = 1

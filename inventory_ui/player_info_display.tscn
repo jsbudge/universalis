@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuemyt65ka01f"]
+
+[ext_resource type="Script" path="res://inventory_ui/player_info_display.gd" id="1_7xv6u"]
+[ext_resource type="Texture2D" uid="uid://m7vr8bcm732o" path="res://assets/orbs_detail.tres" id="2_torck"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_e5w2l"]
+
+[node name="PlayerInfoDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7xv6u")
+
+[node name="PlayerPanel" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 221.0
+offset_top = 81.0
+offset_right = 463.0
+offset_bottom = 475.0
+texture = SubResource("ImageTexture_e5w2l")
+
+[node name="Item0" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 325.0
+offset_top = 116.0
+offset_right = 357.0
+offset_bottom = 148.0
+texture = ExtResource("2_torck")
+expand_mode = 1
+
+[node name="Item1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 384.0
+offset_top = 212.0
+offset_right = 416.0
+offset_bottom = 244.0
+texture = ExtResource("2_torck")
+
+[node name="Item2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 282.0
+offset_top = 209.0
+offset_right = 314.0
+offset_bottom = 241.0
+texture = ExtResource("2_torck")
+
+[node name="Item3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 330.0
+offset_top = 290.0
+offset_right = 362.0
+offset_bottom = 322.0
+texture = ExtResource("2_torck")
+
+[node name="Item4" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 340.0
+offset_top = 429.0
+offset_right = 372.0
+offset_bottom = 461.0
+texture = ExtResource("2_torck")
+
+[node name="Label0" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 317.0
+offset_top = 152.0
+offset_right = 365.0
+offset_bottom = 175.0
+
+[node name="Label1" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 250.0
+offset_top = 241.0
+offset_right = 492.0
+offset_bottom = 264.0
+
+[node name="Label2" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 369.0
+offset_top = 248.0
+offset_right = 611.0
+offset_bottom = 271.0
+
+[node name="Label3" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 283.0
+offset_top = 330.0
+offset_right = 525.0
+offset_bottom = 353.0
+
+[node name="Label4" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 295.0
+offset_top = 478.0
+offset_right = 537.0
+offset_bottom = 501.0
+
+[node name="StatDisplay" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 456.0
+offset_right = 324.0
+offset_bottom = 496.0

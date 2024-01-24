@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="Orb" load_steps=3 format=3 uid="uid://di001eyniqyeo"]
+[gd_resource type="Resource" script_class="Orb" load_steps=4 format=3 uid="uid://di001eyniqyeo"]
 
 [ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="1_ytbvg"]
-[ext_resource type="Texture2D" uid="uid://m7vr8bcm732o" path="res://assets/orbs_detail.tres" id="2_pq5f1"]
+[ext_resource type="Texture2D" uid="uid://co5q3y8i3qdwd" path="res://assets/orbs_detail.png" id="2_uooaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtcmc"]
+atlas = ExtResource("2_uooaj")
+region = Rect2(0, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_ytbvg")
 name = "Starter"
-texture = ExtResource("2_pq5f1")
+texture = SubResource("AtlasTexture_xtcmc")
 description = "Basic starter orb."
 harmonics = Array[int]([])
 stat_modifiers = Array[int]([])

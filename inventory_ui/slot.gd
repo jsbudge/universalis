@@ -1,29 +1,39 @@
 extends PanelContainer
 
-@export var sdata: SlotData
+@export var item_type: int = 0
+@export var item_slot: int = 0
+var draggable: bool = false
 signal swap_data
 
-func set_slot_data(i: SlotData) -> void:
-	sdata = i
-	$PanelContainer/TextureRect.texture = i.texture
-	tooltip_text = "%s\n%s" % [i.name, i.description]
-	
-	if i.is_stackable:
-		$QuantityLabel.text = "x%i" % i.amount
-		$QuantityLabel.show()
+func set_slot_data(_type, _slot, is_draggable: bool = false) -> void:
+	var sdata = ActivePlayer.getArray(_type)[_slot]
+	draggable = is_draggable
+	if sdata:
+		draggable = true
+		$PanelContainer/TextureRect.texture = sdata.texture
+		tooltip_text = "%s\n%s" % [sdata.name, sdata.description]
 		
-func highlight():
-	$PanelContainer/ColorRect.visible = not $PanelContainer/ColorRect.visible
+		if sdata.is_stackable:
+			$QuantityLabel.text = "x%i" % sdata.amount
+			$QuantityLabel.show()
+	item_type = _type
+	item_slot = _slot
+		
+func highlight(onoff: bool):
+	$PanelContainer/ColorRect.visible = onoff
 	
 func _can_drop_data(at_position, data):
-	return data is SlotData
+	return draggable
 	
 func _drop_data(at_position, data):
-	set_slot_data(data)
+	highlight(false)
+	emit_signal("swap_data", data, [item_type, item_slot])
 	
 
 func _get_drag_data(at_position):
-	var prev = TextureRect.new()
-	prev.texture = sdata.texture
-	set_drag_preview(prev)
-	return sdata
+	if draggable:
+		var prev = TextureRect.new()
+		prev.texture = $PanelContainer/TextureRect.texture
+		set_drag_preview(prev)
+		highlight(true)
+	return [item_type, item_slot]

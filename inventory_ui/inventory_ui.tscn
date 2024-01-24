@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chiqbu20hbb26"]
+[gd_scene load_steps=4 format=3 uid="uid://chiqbu20hbb26"]
 
 [ext_resource type="Script" path="res://inventory_ui/inventory_ui.gd" id="1_45i6y"]
 [ext_resource type="Script" path="res://inventory_ui/inventory_control.gd" id="1_wsnv8"]
+[ext_resource type="PackedScene" uid="uid://cuemyt65ka01f" path="res://inventory_ui/player_info_display.tscn" id="3_hy0m2"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -52,7 +53,7 @@ layout_mode = 2
 size_flags_vertical = 2
 mouse_filter = 2
 mouse_default_cursor_shape = 12
-columns = 5
+columns = 4
 
 [node name="InfoPanel" type="GridContainer" parent="InventoryUI/ItemContainer"]
 layout_mode = 2
@@ -70,6 +71,9 @@ offset_bottom = 8.0
 [node name="Button2" type="Button" parent="InventoryUI/PopupMenu"]
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="PlayerInfoDisplay" parent="." instance=ExtResource("3_hy0m2")]
+layout_mode = 1
 
 [connection signal="mouse_entered" from="InventoryUI" to="InventoryUI" method="_on_mouse_entered"]
 [connection signal="tab_changed" from="InventoryUI/TabBar" to="InventoryUI" method="_on_tab_bar_tab_changed"]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Orb" load_steps=4 format=3 uid="uid://b70du5mbc6qtk"]
+
+[ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="1_lbhka"]
+[ext_resource type="Texture2D" uid="uid://co5q3y8i3qdwd" path="res://assets/orbs_detail.png" id="2_w3t2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfbol"]
+atlas = ExtResource("2_w3t2x")
+region = Rect2(96, 128, 32, 32)
+
+[resource]
+script = ExtResource("1_lbhka")
+name = "Second orb."
+texture = SubResource("AtlasTexture_sfbol")
+description = "The second orb."
+harmonics = Array[int]([])
+stat_modifiers = Array[int]([])
+move_types = Array[int]([])
+moves = []
+quantity = 1
