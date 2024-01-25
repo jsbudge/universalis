@@ -9,6 +9,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("open_inventory"):
 		$HUD/InventoryUI.visible = not $HUD/InventoryUI.visible
+		$HUD/InventoryUI.grab_focus()
 		$GameScene.process_mode = Node.PROCESS_MODE_DISABLED if $HUD/InventoryUI.visible else Node.PROCESS_MODE_ALWAYS
 	elif Input.is_action_just_pressed("open_menu"):
 		$HUD/MainMenu.visible = not $HUD/MainMenu.visible

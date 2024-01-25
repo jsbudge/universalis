@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://5yniqpj3nkge"]
+[gd_scene load_steps=19 format=3 uid="uid://5yniqpj3nkge"]
 
 [ext_resource type="Script" path="res://init_test.gd" id="1_cl3e6"]
 [ext_resource type="PackedScene" uid="uid://bl2tlecx23cc3" path="res://player/player.tscn" id="1_vjum4"]
@@ -8,8 +8,7 @@
 [ext_resource type="Script" path="res://assets/crystal.gd" id="4_whty7"]
 [ext_resource type="Texture2D" uid="uid://7qvyn3jud0vf" path="res://assets/crystal.png" id="5_b3awt"]
 [ext_resource type="PackedScene" uid="uid://4xoffiegotwe" path="res://enemy/enemy.tscn" id="6_dmfie"]
-[ext_resource type="Script" path="res://assets/treasure_chest.gd" id="7_erp3x"]
-[ext_resource type="Texture2D" uid="uid://dj6kvx3ed3wke" path="res://assets/RGW_Chests.png" id="8_crcgn"]
+[ext_resource type="PackedScene" uid="uid://b65sqnmdxxiil" path="res://assets/treasure_chest.tscn" id="10_ruvmr"]
 [ext_resource type="PackedScene" uid="uid://boslbvaem4idu" path="res://main_menu.tscn" id="10_sv58m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdywc"]
@@ -65,13 +64,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gtcm"]
-atlas = ExtResource("8_crcgn")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgq5y"]
-size = Vector2(15, 10)
-
 [node name="InitTest" type="Node"]
 script = ExtResource("1_cl3e6")
 
@@ -108,19 +100,8 @@ sprite_frames = SubResource("SpriteFrames_5y0nj")
 visibility_layer = 3
 position = Vector2(505, 232)
 
-[node name="TreasureChest" type="Area2D" parent="GameScene"]
-position = Vector2(578, 362)
-collision_layer = 5
-collision_mask = 5
-script = ExtResource("7_erp3x")
-gold = 10
-
-[node name="Sprite2D" type="Sprite2D" parent="GameScene/TreasureChest"]
-texture = SubResource("AtlasTexture_4gtcm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameScene/TreasureChest"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_xgq5y")
+[node name="TreasureChest" parent="GameScene" instance=ExtResource("10_ruvmr")]
+position = Vector2(588, 358)
 
 [node name="Player" parent="GameScene" instance=ExtResource("1_vjum4")]
 

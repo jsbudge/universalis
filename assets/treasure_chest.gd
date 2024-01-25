@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 
 @export var is_open: bool = false

@@ -1,14 +1,17 @@
 extends PanelContainer
 
 @export var item_type: int = 0
-@export var item_slot: int = 0
+@export var item_slot: int = -1
 var draggable: bool = false
 signal swap_data
 
 func set_slot_data(_type, _slot, is_draggable: bool = false) -> void:
 	var sdata = ActivePlayer.getArray(_type)[_slot]
 	draggable = is_draggable
+	if is_draggable:
+		item_slot = _slot
 	if sdata:
+		item_slot = _slot
 		draggable = true
 		$PanelContainer/TextureRect.texture = sdata.texture
 		tooltip_text = "%s\n%s" % [sdata.name, sdata.description]
@@ -17,13 +20,12 @@ func set_slot_data(_type, _slot, is_draggable: bool = false) -> void:
 			$QuantityLabel.text = "x%i" % sdata.amount
 			$QuantityLabel.show()
 	item_type = _type
-	item_slot = _slot
-		
+
 func highlight(onoff: bool):
 	$PanelContainer/ColorRect.visible = onoff
 	
 func _can_drop_data(at_position, data):
-	return draggable
+	return data is Array
 	
 func _drop_data(at_position, data):
 	highlight(false)

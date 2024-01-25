@@ -10,19 +10,24 @@ func addInventory(i):
 		for o in player_data.inventory.OrbList:
 			if not o:
 				o = i
-				break
+				return
+		player_data.inventory.OrbList.append(i)
 	elif is_instance_of(i, Equipment):
 		for e in player_data.inventory.EquipList:
 			if not e:
 				e = i
-				break
+				return
+		player_data.inventory.EquipList.append(i)
 	elif is_instance_of(i, ItemData):
 		for e in player_data.inventory.ConsumableList:
 			if not e:
 				e = i
+				return
 			elif e.id == i.id:
 				e.amount += i.amount
-				
+				return
+		player_data.inventory.ConsumableList.append(i)
+	
 func setActiveOrb(i: int):
 	player_data.active_orb = i
 	
@@ -66,14 +71,26 @@ func swapItems(swap_from, swap_to):
 		for f in to_array:
 			if not f:
 				to_array.erase(f)
-				
+
+
+func moveItem(swap_from: Array, swap_to: int):
+	# Function intended for moving something from active area to inventory
+	var from_array = getArray(swap_from[0])
+	var to_array = getArray(swap_to)
+	var from_data = from_array[swap_from[1]]
+	to_array.append(from_data)
+	from_array[swap_from[1]] = null
+
+
 func getModStats() -> Array:
-	var fullstats = Array[5]
-	var itemstats = Array[5]
+	var fullstats = [0, 0, 0, 0, 0]
+	var itemstats = [0, 0, 0, 0, 0]
 	for i in range(5):
 		for n in range(5):
-			itemstats[i] += player_data.ready_orbs[n].stat_modifiers[i]
-			itemstats[i] += player_data.equipped[n].stat_modifiers[i]
+			if player_data.ready_orbs[n]:
+				itemstats[i] += player_data.ready_orbs[n].stat_modifiers[i]
+			if player_data.equipped[n]:
+				itemstats[i] += player_data.equipped[n].stat_modifiers[i]
 		fullstats[i] = player_data.stats[i] + itemstats[i]
 		fullstats[i] += int(fullstats[i] * .5 * player_data.modifiers[i])
 	return fullstats

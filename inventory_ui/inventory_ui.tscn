@@ -44,7 +44,7 @@ select_with_rmb = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="InventoryUI"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 8
 mouse_filter = 2
 mouse_default_cursor_shape = 6
 
@@ -76,4 +76,6 @@ offset_bottom = 8.0
 layout_mode = 1
 
 [connection signal="mouse_entered" from="InventoryUI" to="InventoryUI" method="_on_mouse_entered"]
+[connection signal="updateDisplays" from="InventoryUI" to="." method="_on_inventory_ui_update_displays"]
 [connection signal="tab_changed" from="InventoryUI/TabBar" to="InventoryUI" method="_on_tab_bar_tab_changed"]
+[connection signal="tab_changed" from="InventoryUI/TabBar" to="PlayerInfoDisplay" method="_on_tab_bar_tab_changed"]

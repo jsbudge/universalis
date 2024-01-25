@@ -10,7 +10,7 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgq5y"]
 size = Vector2(15, 10)
 
-[node name="TreasureChest" type="Area2D"]
+[node name="TreasureChest" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_wj5a2")

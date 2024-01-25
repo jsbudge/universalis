@@ -7,6 +7,7 @@ const cons_tab: int = 2
 @onready var orb_grid: GridContainer = $ItemContainer/ItemList
 @onready var info_panel = $ItemContainer/InfoPanel
 @onready var tab_bar: TabBar = $TabBar
+signal updateDisplays
 
 func _ready():
 	populate_item_grid(tab_bar.current_tab)
@@ -19,11 +20,13 @@ func populate_item_grid(curr_tab) -> void:
 	for child in orb_grid.get_children():
 		child.queue_free()
 	var item_data = ActivePlayer.getArray(curr_tab)
-	for sd in range(25):
+	for sd in range(16):
 		var slot = Slot.instantiate()
 		if len(item_data) > sd:
-			slot.connect("swap_data", _swap_data)
 			slot.set_slot_data(curr_tab, sd)
+		else:
+			slot.item_type = curr_tab
+		slot.connect("swap_data", _swap_data)
 		orb_grid.add_child(slot)
 			
 func populate_info_panel(curr_tab) -> void:
@@ -57,8 +60,9 @@ func _on_mouse_entered():
 				child.highlight()
 				
 func _swap_data(swap_from, swap_to):
-	ActivePlayer.swapItems(swap_from, swap_to)
+	if swap_to[1] == -1:
+		ActivePlayer.moveItem(swap_from, swap_to[0])
+	else:
+		ActivePlayer.swapItems(swap_from, swap_to)
 	_on_tab_bar_tab_changed(tab_bar.current_tab)
-		
-		
-		
+	emit_signal("updateDisplays")
