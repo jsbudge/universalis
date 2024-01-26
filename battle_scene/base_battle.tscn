@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dlcwke5x1tgts"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="PlayerBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
