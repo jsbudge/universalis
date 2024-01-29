@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=7 format=3 uid="uid://bjx2brxuotvka"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=11 format=3 uid="uid://bjx2brxuotvka"]
 
 [ext_resource type="Script" path="res://player_data.gd" id="1_bc76o"]
 [ext_resource type="Resource" uid="uid://d1h8c8lyj8ayq" path="res://player/test_inv.tres" id="1_eyhf2"]
 [ext_resource type="Resource" uid="uid://q3cmtkhsiwxk" path="res://assets/items/accessories/helmet.tres" id="1_kmyq1"]
 [ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="2_2xc0m"]
+[ext_resource type="Resource" uid="uid://dft0vyfeuounc" path="res://assets/items/orbs/Lightball.tres" id="3_7sdpd"]
 [ext_resource type="Texture2D" uid="uid://m7vr8bcm732o" path="res://assets/orbs_detail.tres" id="3_ogns1"]
+[ext_resource type="Resource" uid="uid://b70du5mbc6qtk" path="res://assets/items/orbs/second.tres" id="4_qvvw1"]
+[ext_resource type="Resource" uid="uid://biqgx6b0v31me" path="res://assets/items/orbs/third.tres" id="7_fwetr"]
+[ext_resource type="Resource" uid="uid://di001eyniqyeo" path="res://assets/items/orbs/starter.tres" id="8_wegf1"]
 
 [sub_resource type="Resource" id="Resource_ssebt"]
 script = ExtResource("2_2xc0m")
@@ -13,8 +17,8 @@ texture = ExtResource("3_ogns1")
 description = "Basic starter orb."
 harmonics = Array[int]([0, 0, 0, 0, 0])
 stat_modifiers = Array[int]([0, 0, 0, 0, 0])
-move_types = Array[int]([0, 0, 0, 0, 0])
-moves = []
+move_types = Array[int]([0, 0, 0, 0])
+moves = Array[Resource("res://assets/items/orbs/moves/move_base.gd")]([])
 quantity = 1
 
 [resource]
@@ -22,7 +26,7 @@ script = ExtResource("1_bc76o")
 inventory = ExtResource("1_eyhf2")
 hp = 100
 equipped = Array[Resource("res://assets/items/accessories/equip_base.gd")]([ExtResource("1_kmyq1"), null, null, null, null])
-ready_orbs = Array[ExtResource("2_2xc0m")]([null, null, SubResource("Resource_ssebt"), null, null])
+ready_orbs = Array[ExtResource("2_2xc0m")]([ExtResource("3_7sdpd"), ExtResource("4_qvvw1"), SubResource("Resource_ssebt"), ExtResource("7_fwetr"), ExtResource("8_wegf1")])
 stats = Array[int]([1, 2, 3, 4, 5])
 modifiers = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0])
 gold = 0

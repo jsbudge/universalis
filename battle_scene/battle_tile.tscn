@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bix4eecodh3w2"]
+
+[ext_resource type="Script" path="res://battle_scene/battle_tile.gd" id="1_v7ns0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u3mdo"]
+load_path = "res://.godot/imported/fullset.png-4dcb75a9d0125de9c058c4d4f1bdeabc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmrca"]
+atlas = SubResource("CompressedTexture2D_u3mdo")
+region = Rect2(992, 1600, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mokns"]
+
+[node name="BattleTile" type="Node2D"]
+script = ExtResource("1_v7ns0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_pmrca")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mokns")

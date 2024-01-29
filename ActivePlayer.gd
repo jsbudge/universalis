@@ -31,6 +31,9 @@ func addInventory(i):
 func setActiveOrb(i: int):
 	player_data.active_orb = i
 	
+func getActiveOrb() -> Orb:
+	return player_data.ready_orbs[player_data.active_orb]
+	
 func equip(i: Equipment):
 	var e_slot = i.slot
 	if player_data.equipped[e_slot]:

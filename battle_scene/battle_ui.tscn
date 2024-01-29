@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfty1m2a7xv1l"]
+
+[ext_resource type="Script" path="res://battle_scene/battle_ui.gd" id="1_17j8k"]
+
+[sub_resource type="Theme" id="Theme_pnk86"]
+
+[node name="BattleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17j8k")
+
+[node name="OptionGrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 400.0
+offset_right = 174.0
+offset_bottom = 466.0
+columns = 2
+
+[node name="AttackButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Attack"
+
+[node name="SwapButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Swap Orbs"
+
+[node name="ItemButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Use Item"
+
+[node name="RunButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Run"
+
+[node name="AttackGrid" type="GridContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 196.0
+offset_top = 403.0
+offset_right = 236.0
+offset_bottom = 443.0
+
+[node name="Atk1" type="Button" parent="AttackGrid"]
+layout_mode = 2
+text = "Attack 1"
+
+[node name="Atk2" type="Button" parent="AttackGrid"]
+layout_mode = 2
+text = "Attack 2"
+
+[node name="Atk3" type="Button" parent="AttackGrid"]
+layout_mode = 2
+text = "Attack 3"
+
+[node name="Atk4" type="Button" parent="AttackGrid"]
+layout_mode = 2
+text = "Attack 4"
+
+[node name="SwapGrid" type="GridContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 376.0
+offset_right = 41.0
+offset_bottom = 416.0
+
+[node name="Orb1" type="Button" parent="SwapGrid" groups=["swap_buttons"]]
+layout_mode = 2
+theme = SubResource("Theme_pnk86")
+text = "Orb1"
+
+[node name="Orb2" type="Button" parent="SwapGrid" groups=["swap_buttons"]]
+layout_mode = 2
+text = "Orb2"
+
+[node name="Orb3" type="Button" parent="SwapGrid" groups=["swap_buttons"]]
+layout_mode = 2
+text = "Orb3"
+
+[node name="Orb4" type="Button" parent="SwapGrid" groups=["swap_buttons"]]
+layout_mode = 2
+text = "Orb4"
+
+[node name="Orb5" type="Button" parent="SwapGrid" groups=["swap_buttons"]]
+layout_mode = 2
+theme = SubResource("Theme_pnk86")
+text = "Orb5"
+
+[node name="ActiveOrbDisplay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 395.0
+offset_right = 327.0
+offset_bottom = 435.0
+
+[connection signal="pressed" from="OptionGrid/SwapButton" to="." method="_on_swap_button_pressed"]
+[connection signal="pressed" from="SwapGrid/Orb1" to="." method="_on_swap_orb_pressed" binds= [0]]
+[connection signal="pressed" from="SwapGrid/Orb2" to="." method="_on_swap_orb_pressed" binds= [1]]
+[connection signal="pressed" from="SwapGrid/Orb3" to="." method="_on_swap_orb_pressed" binds= [2]]
+[connection signal="pressed" from="SwapGrid/Orb4" to="." method="_on_swap_orb_pressed" binds= [3]]
+[connection signal="pressed" from="SwapGrid/Orb5" to="." method="_on_swap_orb_pressed" binds= [4]]

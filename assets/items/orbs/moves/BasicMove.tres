@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Move" load_steps=3 format=3 uid="uid://bgnfw5cwj3xwc"]
+
+[ext_resource type="Texture2D" uid="uid://bduhvorv4q5n8" path="res://assets/fullset.tres" id="1_8rjfl"]
+[ext_resource type="Script" path="res://assets/items/orbs/moves/move_base.gd" id="1_ubvi8"]
+
+[resource]
+script = ExtResource("1_ubvi8")
+name = "Move"
+description = "Base move class"
+icon = ExtResource("1_8rjfl")
+_type = 0
+target_type = 0
+cost = Array[int]([0, 0, 0, 0, 0, 0])
+hook = -1
+power = 0
+tech = 0
+harmonics = Array[int]([0, 0, 0, 0, 0])
