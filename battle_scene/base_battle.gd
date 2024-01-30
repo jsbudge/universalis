@@ -5,6 +5,7 @@ const BattleChar = preload("res://battle_scene/battle_character.tscn")
 @onready var grid: Array[Array] = [[], [], [], [], [], []]
 @onready var players: Array
 var mode = 0
+signal init_ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,20 +19,11 @@ func _ready():
 	1, "Test Dude", 0, grid[2][1].position + Vector2(16, 16))
 	$Select.visible = false
 	$Select.stop()
-			
+	emit_signal("init_ui", [[2, 1]])
+
+
 func load_grid(grid_data):
 	pass
-	
-func _process(delta):
-	if mode == 1:
-		if Input.is_action_just_pressed("move_down"):
-			$Select.position = players[0].position + Vector2(0, 50)
-		elif Input.is_action_just_pressed("move_up"):
-			$Select.position = players[0].position - Vector2(0, 50)
-		elif Input.is_action_just_pressed("move_left"):
-			$Select.position = players[0].position + Vector2(50, 0)
-		elif Input.is_action_just_pressed("move_right"):
-			$Select.position = players[0].position - Vector2(50, 0)
 	
 func load_player(max_hp, curr_hp, stats, curr_harmonics, curr_status, curr_name, curr_team, ppos):
 	var player = BattleChar.instantiate()
@@ -39,10 +31,3 @@ func load_player(max_hp, curr_hp, stats, curr_harmonics, curr_status, curr_name,
 	player.position = ppos
 	players.append(player)
 	add_child(player)
-
-
-func _on_battle_ui_atk_select(atk_num):
-	$Select.position = players[0].position + Vector2(50, 0)
-	$Select.visible = true
-	$Select.play()
-	mode = 1

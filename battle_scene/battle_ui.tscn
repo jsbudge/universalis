@@ -164,15 +164,19 @@ offset_bottom = 484.0
 layout_mode = 2
 
 [node name="Select" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 216.0
-offset_top = 152.0
-offset_right = 256.0
-offset_bottom = 192.0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Select"]
-position = Vector2(18, 19)
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_o2vd8")
 
 [connection signal="focus_entered" from="OptionGrid/AttackButton" to="." method="_on_button_focus_entered" binds= ["Attack!"]]
