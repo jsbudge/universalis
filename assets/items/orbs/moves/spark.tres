@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://ns3tmnaosc0g"]
+
+[ext_resource type="Script" path="res://assets/items/orbs/moves/move_base.gd" id="1_a5bb8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u3mdo"]
+load_path = "res://.godot/imported/fullset.png-4dcb75a9d0125de9c058c4d4f1bdeabc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t8xj"]
+atlas = SubResource("CompressedTexture2D_u3mdo")
+region = Rect2(704, 1408, 32, 32)
+
+[resource]
+script = ExtResource("1_a5bb8")
+name = "Spark"
+description = "Small spark is thrown at the foe."
+icon = SubResource("AtlasTexture_1t8xj")
+_type = 0
+target_type = 0
+cost = Array[int]([0, 0, 0, 0, 0, 0])
+hook = -1
+power = 0
+tech = 0
+harmonics = Array[int]([0, 0, 0, 0, 0])

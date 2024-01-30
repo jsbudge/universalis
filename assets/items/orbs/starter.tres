@@ -15,5 +15,5 @@ description = "Basic starter orb."
 harmonics = Array[int]([0, 0, 0, 0, 0])
 stat_modifiers = Array[int]([0, 0, 0, 0, 0])
 move_types = Array[int]([0, 0, 0, 0, 0])
-moves = []
+moves = Array[Resource("res://assets/items/orbs/moves/move_base.gd")]([])
 quantity = 1

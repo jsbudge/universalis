@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://q17p4wrk6tl0"]
+
+[ext_resource type="Script" path="res://assets/items/orbs/moves/move_base.gd" id="1_ufd36"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_logqf"]
+load_path = "res://.godot/imported/fullset.png-4dcb75a9d0125de9c058c4d4f1bdeabc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd6pc"]
+atlas = SubResource("CompressedTexture2D_logqf")
+region = Rect2(960, 1344, 32, 32)
+
+[resource]
+script = ExtResource("1_ufd36")
+name = "Basic Heal"
+description = "Simple healing spell."
+icon = SubResource("AtlasTexture_wd6pc")
+_type = 1
+target_type = 0
+cost = Array[int]([0, 0, 0, 0, 0, 0])
+hook = -1
+power = 0
+tech = 0
+harmonics = Array[int]([0, 0, 0, 0, 0])

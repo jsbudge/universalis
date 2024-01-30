@@ -1,8 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfty1m2a7xv1l"]
+[gd_scene load_steps=11 format=3 uid="uid://bfty1m2a7xv1l"]
 
 [ext_resource type="Script" path="res://battle_scene/battle_ui.gd" id="1_17j8k"]
+[ext_resource type="Texture2D" uid="uid://7qvyn3jud0vf" path="res://assets/crystal.png" id="2_ylqd0"]
 
 [sub_resource type="Theme" id="Theme_pnk86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqok1"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0g15"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h87s"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu07m"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p44a"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf6et"]
+atlas = ExtResource("2_ylqd0")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2vd8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqok1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0g15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h87s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu07m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p44a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf6et")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BattleUI" type="Control"]
 layout_mode = 3
@@ -24,6 +75,10 @@ columns = 2
 [node name="AttackButton" type="Button" parent="OptionGrid"]
 layout_mode = 2
 text = "Attack"
+
+[node name="MoveButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Move"
 
 [node name="SwapButton" type="Button" parent="OptionGrid"]
 layout_mode = 2
@@ -98,7 +153,35 @@ offset_top = 395.0
 offset_right = 327.0
 offset_bottom = 435.0
 
+[node name="InfoPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 444.0
+offset_right = 323.0
+offset_bottom = 484.0
+
+[node name="InfoLabel" type="Label" parent="InfoPanel"]
+layout_mode = 2
+
+[node name="Select" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 216.0
+offset_top = 152.0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Select"]
+position = Vector2(18, 19)
+sprite_frames = SubResource("SpriteFrames_o2vd8")
+
+[connection signal="focus_entered" from="OptionGrid/AttackButton" to="." method="_on_button_focus_entered" binds= ["Attack!"]]
+[connection signal="pressed" from="OptionGrid/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="OptionGrid/SwapButton" to="." method="_on_swap_button_pressed"]
+[connection signal="pressed" from="AttackGrid/Atk1" to="." method="_on_atk_pressed" binds= [0]]
+[connection signal="pressed" from="AttackGrid/Atk2" to="." method="_on_atk_pressed" binds= [1]]
+[connection signal="pressed" from="AttackGrid/Atk3" to="." method="_on_atk_pressed" binds= [2]]
+[connection signal="pressed" from="AttackGrid/Atk4" to="." method="_on_atk_pressed" binds= [3]]
 [connection signal="pressed" from="SwapGrid/Orb1" to="." method="_on_swap_orb_pressed" binds= [0]]
 [connection signal="pressed" from="SwapGrid/Orb2" to="." method="_on_swap_orb_pressed" binds= [1]]
 [connection signal="pressed" from="SwapGrid/Orb3" to="." method="_on_swap_orb_pressed" binds= [2]]
