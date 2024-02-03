@@ -2,7 +2,8 @@ extends Node2D
 
 const BattleTile = preload("res://battle_scene/battle_tile.tscn")
 const BattleChar = preload("res://battle_scene/battle_character.tscn")
-@onready var grid: Array[Array] = [[], [], [], [], [], []]
+@export var grid_init: Vector2 = Vector2(100, 100)
+@export var grid_spacing: Vector2 = Vector2(50, 50)
 @onready var players: Array
 var mode = 0
 signal init_ui
@@ -13,13 +14,11 @@ func _ready():
 		for y in range(4):
 			var btile = BattleTile.instantiate()
 			btile.position = Vector2(100 + x * 50, 150 + y * 50)
-			grid[x].append(btile)
 			add_child(btile)
+	var ppos = grid_init + Vector2(16 + grid_spacing.x * 2, 16 + grid_spacing.y * 1)
 	load_player(100, 100, ActivePlayer.player_data.stats, ActivePlayer.player_data.harmonics, 
-	1, "Test Dude", 0, grid[2][1].position + Vector2(16, 16))
-	$Select.visible = false
-	$Select.stop()
-	emit_signal("init_ui", [[2, 1]])
+	1, "Test Dude", 0, ppos)
+	emit_signal("init_ui", grid_init, grid_spacing, ppos)
 
 
 func load_grid(grid_data):

@@ -179,8 +179,16 @@ focus_mode = 2
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_o2vd8")
 
+[node name="MoveLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Select a move direction."
+
 [connection signal="focus_entered" from="OptionGrid/AttackButton" to="." method="_on_button_focus_entered" binds= ["Attack!"]]
 [connection signal="pressed" from="OptionGrid/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="OptionGrid/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="OptionGrid/SwapButton" to="." method="_on_swap_button_pressed"]
 [connection signal="pressed" from="AttackGrid/Atk1" to="." method="_on_atk_pressed" binds= [0]]
 [connection signal="pressed" from="AttackGrid/Atk2" to="." method="_on_atk_pressed" binds= [1]]
