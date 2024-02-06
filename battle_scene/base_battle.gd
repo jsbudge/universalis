@@ -18,6 +18,9 @@ func _ready():
 	var ppos = grid_init + Vector2(16 + grid_spacing.x * 2, 16 + grid_spacing.y * 1)
 	load_player(100, 100, ActivePlayer.player_data.stats, ActivePlayer.player_data.harmonics, 
 	1, "Test Dude", 0, ppos)
+	var epos = grid_init + Vector2(16 + grid_spacing.x * 3, 16 + grid_spacing.y * 1)
+	load_player(100, 100, ActivePlayer.player_data.stats, ActivePlayer.player_data.harmonics, 
+	1, "Test Enemy", 1, epos)
 	emit_signal("init_ui", grid_init, grid_spacing, ppos)
 
 

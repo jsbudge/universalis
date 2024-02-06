@@ -48,8 +48,13 @@ func writeInfo(s: String) -> void:
 	
 func selectMotion(direction: Vector2):
 	if $MoveLabel.visible:
-		var mvec = (player_position - ($Select.position + direction)) / grid_spacing
+		var mvec = (($Select.position + direction) - player_position) / grid_spacing
 		if abs(mvec.x) > 1 or abs(mvec.y) > 1 or (abs(mvec.x) > 0 and abs(mvec.y) > 0):
+			direction = Vector2(0, 0)
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create($Select.position, $Select.position + mvec * grid_spacing)
+		var result = space_state.intersect_ray(query)
+		if result:
 			direction = Vector2(0, 0)
 		$Select.position += direction
 	
