@@ -7,7 +7,7 @@ signal occupied
 
 func _on_area_2d_body_entered(body):
 	is_occupied = true
-	emit_signal("occupied")
+	emit_signal("occupied", body)
 
 
 func _on_area_2d_body_exited(body):

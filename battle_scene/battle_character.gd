@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var status: int = 0
 @export var char_name: String = ""
 @export var team: int = 1
+@export var loot: Array
 
 signal died
 

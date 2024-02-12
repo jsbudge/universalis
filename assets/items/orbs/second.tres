@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="Orb" load_steps=4 format=3 uid="uid://b70du5mbc6qtk"]
+[gd_resource type="Resource" script_class="Orb" load_steps=6 format=3 uid="uid://b70du5mbc6qtk"]
 
+[ext_resource type="Resource" uid="uid://cb86h1jn2lwct" path="res://assets/items/orbs/moves/burn.tres" id="1_7cpl5"]
 [ext_resource type="Script" path="res://assets/items/orbs/orb_base.gd" id="1_lbhka"]
+[ext_resource type="Resource" uid="uid://ns3tmnaosc0g" path="res://assets/items/orbs/moves/spark.tres" id="2_076at"]
 [ext_resource type="Texture2D" uid="uid://co5q3y8i3qdwd" path="res://assets/orbs_detail.png" id="2_w3t2x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfbol"]
@@ -15,5 +17,5 @@ description = "The second orb."
 harmonics = Array[int]([0, 0, 0, 0, 0])
 stat_modifiers = Array[int]([0, 0, 0, 0, 0])
 move_types = Array[int]([0, 0, 0, 0, 0])
-moves = Array[Resource("res://assets/items/orbs/moves/move_base.gd")]([])
+moves = Array[Resource("res://assets/items/orbs/moves/move_base.gd")]([ExtResource("1_7cpl5"), ExtResource("2_076at")])
 quantity = 1
