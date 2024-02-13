@@ -33,7 +33,7 @@ func _on_battle_ui_atk_select(selected_move):
 	var move = ActivePlayer.getActiveOrb().moves[selected_move]
 	emit_signal("animation", true)
 	var exp = Explosion.instantiate()
-	exp.position = grid.calculate_map_position($Cursor.cell)
+	exp.position = grid.calculate_map_position($Cursor.cell) - Vector2(32, 32)
 	exp.get_node("Animation").connect("animation_finished", ignore_input)
 	add_child(exp)
 	await(exp.get_node("Animation").animation_finished)

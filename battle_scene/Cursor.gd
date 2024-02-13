@@ -20,6 +20,12 @@ signal moved(new_cell)
 
 # Coordinates of the current cell the cursor is hovering.
 var cell := Vector2.ZERO
+var homecell := Vector2.ZERO
+var constraint: int = 1
+var constrain: bool = false
+
+# Type of rect to draw around cursor.
+var rect_type: int = 0
 
 # We use the timer to have a cooldown on the cursor movement.
 @onready var _timer: Timer = $Timer
@@ -67,6 +73,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		direction = Vector2.LEFT
 	elif event.is_action("ui_down"):
 		direction = Vector2.DOWN
+	if constrain:
+		if homecell.distance_to(cell + direction) > constraint:
+			return
 	set_cell(cell + direction)
 
 
@@ -93,3 +102,24 @@ func set_cell(value: Vector2) -> void:
 	position = grid.calculate_map_position(cell)
 	emit_signal("moved", cell)
 	_timer.start()
+	
+func set_rect(value: int) -> void:
+	if value == 0 or value == 2:
+		rect_type = 0
+	elif value == 1:
+		rect_type = 1
+	else:
+		rect_type = 2
+
+
+func _on_battle_ui_atk_chose(move):
+	homecell = cell
+	if move.target_type == 0:
+		constraint = 1
+	elif move.target_type == 2:
+		constraint = 2
+	constrain = true
+
+
+func _on_game_scene_next_action():
+	constrain = false # Replace with function body.

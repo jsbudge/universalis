@@ -71,6 +71,7 @@ animations = [{
 radius = 18.0
 
 [node name="PurpleExplosion" type="Area2D"]
+position = Vector2(-35, -33)
 script = ExtResource("1_nf8d0")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
