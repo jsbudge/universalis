@@ -20,6 +20,7 @@ func _ready():
 	load_player(100, 100, ActivePlayer.player_data.stats, ActivePlayer.player_data.harmonics, 
 	1, "Test Enemy", 1, Vector2(3, 4))
 	$Cursor.set_cell(grid.get_player_grid_position(0))
+	$Cursor.visible = false
 	
 func load_player(max_hp, curr_hp, stats, curr_harmonics, curr_status, curr_name, curr_team, ppos):
 	var player = BattleChar.instantiate()
@@ -37,6 +38,7 @@ func _on_battle_ui_atk_select(selected_move):
 	exp.get_node("Animation").connect("animation_finished", ignore_input)
 	add_child(exp)
 	await(exp.get_node("Animation").animation_finished)
+	$Cursor.set_cell(grid.get_player_grid_position(0))
 	emit_signal("next_action")
 	
 func ignore_input():
@@ -45,7 +47,9 @@ func ignore_input():
 
 func _on_battle_ui_move_select():
 	grid.players[0].position = grid.calculate_map_position($Cursor.cell)
+	$Cursor.set_cell(grid.get_player_grid_position(0))
 	emit_signal("next_action")
-	
-func apply_move(body_rid, body, body_shape_index, local_shape_index):
-	pass
+
+
+func _on_battle_ui_show_cursor(toggle):
+	$Cursor.visible = toggle

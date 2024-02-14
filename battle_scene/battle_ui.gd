@@ -3,6 +3,7 @@ extends Control
 signal atk_select
 signal move_select
 signal atk_chose
+signal show_cursor
 
 # get consts running for ease of reading
 const INFO_MODE: int = 0
@@ -33,7 +34,7 @@ func _ready():
 		else:
 			child.visible = false
 		idx += 1
-	setMode(INFO_MODE)
+	setMode(OPTION_MODE)
 
 func writeInfo(s: String) -> void:
 	$InfoPanel/InfoLabel.text = s
@@ -65,6 +66,7 @@ func _on_button_focus_entered(message: String):
 
 func _on_atk_pressed(butt_num: int) -> void:
 	emit_signal('atk_chose', ActivePlayer.getActiveOrb().moves[butt_num])
+	emit_signal('show_cursor', true)
 	get_viewport().gui_release_focus()
 	selected_butt = butt_num
 
@@ -82,11 +84,7 @@ func _on_game_scene_animation(toggle):
 
 func _on_game_scene_next_action():
 	#Make sure everything is reset for the next action
-	$OptionGrid.visible = true
-	$SwapGrid.visible = false
-	$AttackGrid.visible = false
-	$MoveLabel.visible = false
-	selected_mode = INFO_MODE
+	setMode(OPTION_MODE)
 
 
 func _on_cursor_accept_pressed(cell):
@@ -96,7 +94,7 @@ func _on_cursor_accept_pressed(cell):
 		else:
 			$InfoPanel/InfoLabel.text = 'You have clicked on something.'
 	elif selected_mode == ATTACK_SELECT_MODE and selected_butt != -1:
-		setMode(INFO_MODE)
+		# setMode(INFO_MODE)
 		emit_signal('atk_select', selected_butt)
 	elif selected_mode == MOVE_SELECT_MODE and selected_butt != -1:
 		emit_signal('move_select')
@@ -109,15 +107,24 @@ func setMode(mode: int):
 	$MoveLabel.visible = false
 	if mode == INFO_MODE:
 		writeInfo("Move the cursor and get some info!")
+		emit_signal('show_cursor', true)
 	elif mode == OPTION_MODE:
 		$OptionGrid.visible = true
 		$OptionGrid/AttackButton.grab_focus()
+		emit_signal('show_cursor', false)
 	elif mode == ATTACK_SELECT_MODE:
 		$AttackGrid.visible = true
 		$AttackGrid/Atk1.grab_focus()
+		emit_signal('show_cursor', false)
 	elif mode == SWAP_ORB_MODE:
 		$SwapGrid.visible = true
 		$SwapGrid/Orb1.grab_focus()
+		emit_signal('show_cursor', false)
 	elif mode == MOVE_SELECT_MODE:
 		$MoveLabel.visible = true
+		emit_signal('show_cursor', true)
 	selected_mode = mode
+
+
+func _on_info_button_pressed():
+	setMode(INFO_MODE)

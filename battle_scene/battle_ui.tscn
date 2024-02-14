@@ -41,6 +41,10 @@ text = "Use Item"
 layout_mode = 2
 text = "Run"
 
+[node name="InfoButton" type="Button" parent="OptionGrid"]
+layout_mode = 2
+text = "Info"
+
 [node name="AttackGrid" type="GridContainer" parent="."]
 visible = false
 layout_mode = 0
@@ -123,6 +127,7 @@ text = "Select a move direction."
 [connection signal="pressed" from="OptionGrid/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="OptionGrid/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="OptionGrid/SwapButton" to="." method="_on_swap_button_pressed"]
+[connection signal="pressed" from="OptionGrid/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="AttackGrid/Atk1" to="." method="_on_atk_pressed" binds= [0]]
 [connection signal="pressed" from="AttackGrid/Atk2" to="." method="_on_atk_pressed" binds= [1]]
 [connection signal="pressed" from="AttackGrid/Atk3" to="." method="_on_atk_pressed" binds= [2]]
