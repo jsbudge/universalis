@@ -84,7 +84,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _draw() -> void:
 	# Rect2 is built from the position of the rectangle's top-left corner and its size. To draw the
 	# square around the cell, the start position needs to be `-grid.cell_size / 2`.
-	draw_rect(Rect2(-grid.cell_size / 2, grid.cell_size), Color.ALICE_BLUE, false, 2.0)
+	draw_rect(Rect2(-grid.cell_size / 2 - rect_type * grid.cell_size / 2, 
+	grid.cell_size + rect_type * grid.cell_size), Color.ALICE_BLUE, false, 2.0)
 
 
 # This function controls the cursor's current position.
@@ -104,20 +105,13 @@ func set_cell(value: Vector2) -> void:
 	_timer.start()
 	
 func set_rect(value: int) -> void:
-	if value == 0 or value == 2:
-		rect_type = 0
-	elif value == 1:
-		rect_type = 1
-	else:
-		rect_type = 2
+	rect_type = value - 1
 
 
-func _on_battle_ui_atk_chose(move):
+func _on_battle_ui_select(range, aoe):
 	homecell = cell
-	if move.target_type == 0:
-		constraint = 1
-	elif move.target_type == 2:
-		constraint = 2
+	constraint = range
+	set_rect(aoe)
 	constrain = true
 
 

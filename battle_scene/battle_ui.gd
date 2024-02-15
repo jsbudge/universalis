@@ -2,7 +2,7 @@ extends Control
 
 signal atk_select
 signal move_select
-signal atk_chose
+signal cursor_select
 signal show_cursor
 
 # get consts running for ease of reading
@@ -35,6 +35,10 @@ func _ready():
 			child.visible = false
 		idx += 1
 	setMode(OPTION_MODE)
+	
+func _process(delta):
+	if Input.is_action_just_pressed('ui_cancel'):
+		setMode(OPTION_MODE)
 
 func writeInfo(s: String) -> void:
 	$InfoPanel/InfoLabel.text = s
@@ -65,7 +69,8 @@ func _on_button_focus_entered(message: String):
 
 
 func _on_atk_pressed(butt_num: int) -> void:
-	emit_signal('atk_chose', ActivePlayer.getActiveOrb().moves[butt_num])
+	var move = ActivePlayer.getActiveOrb().moves[butt_num]
+	emit_signal('cursor_select', move.range, move.area_of_effect)
 	emit_signal('show_cursor', true)
 	get_viewport().gui_release_focus()
 	selected_butt = butt_num
@@ -73,6 +78,7 @@ func _on_atk_pressed(butt_num: int) -> void:
 
 func _on_move_button_pressed():
 	setMode(MOVE_SELECT_MODE)
+	emit_signal('cursor_select', 1, 1)
 	selected_butt = -1
 	$OptionGrid.visible = false
 	$MoveLabel.visible = true
@@ -94,9 +100,8 @@ func _on_cursor_accept_pressed(cell):
 		else:
 			$InfoPanel/InfoLabel.text = 'You have clicked on something.'
 	elif selected_mode == ATTACK_SELECT_MODE and selected_butt != -1:
-		# setMode(INFO_MODE)
 		emit_signal('atk_select', selected_butt)
-	elif selected_mode == MOVE_SELECT_MODE and selected_butt != -1:
+	elif selected_mode == MOVE_SELECT_MODE:
 		emit_signal('move_select')
 		
 func setMode(mode: int):
