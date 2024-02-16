@@ -36,6 +36,7 @@ var rect_type: int = 0
 func _ready() -> void:
 	_timer.wait_time = ui_cooldown
 	position = grid.calculate_map_position(cell)
+	visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -113,7 +114,12 @@ func _on_battle_ui_select(range, aoe):
 	constraint = range
 	set_rect(aoe)
 	constrain = true
+	visible = true
 
 
 func _on_game_scene_next_action():
 	constrain = false # Replace with function body.
+
+
+func _on_visibility_changed():
+	$AnimationPlayer.play()

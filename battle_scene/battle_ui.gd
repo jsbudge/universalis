@@ -3,7 +3,6 @@ extends Control
 signal atk_select
 signal move_select
 signal cursor_select
-signal show_cursor
 
 # get consts running for ease of reading
 const INFO_MODE: int = 0
@@ -12,11 +11,17 @@ const ATTACK_SELECT_MODE: int = 2
 const MOVE_SELECT_MODE: int = 3
 const SWAP_ORB_MODE: int = 4
 
+# Set all the phases for battle
+const SELECT_ACTION_PHASE: int = 0
+const EXECUTE_ACTION_PHASE: int = 1
+const RESULT_ACTION_PHASE: int = 2
+const ENEMY_EXECUTE_PHASE: int = 3
+var phase: int = 0
+
 # This shares all the battle data across nodes so we don't have to pingpong signals all over
 @export var grid: Resource = preload("res://battle_scene/battledata.tres")
 var selected_butt: int = -1
 var selected_mode: int = INFO_MODE
-var wait_animation: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,10 +89,6 @@ func _on_move_button_pressed():
 	$MoveLabel.visible = true
 
 
-func _on_game_scene_animation(toggle):
-	wait_animation = toggle
-
-
 func _on_game_scene_next_action():
 	#Make sure everything is reset for the next action
 	setMode(OPTION_MODE)
@@ -133,3 +134,9 @@ func setMode(mode: int):
 
 func _on_info_button_pressed():
 	setMode(INFO_MODE)
+
+
+func _on_game_scene_phase_change(p):
+	phase = p
+	if phase != SELECT_ACTION_PHASE:
+		get_viewport().gui_release_focus()

@@ -1107,13 +1107,12 @@ layer_0/tile_data = PackedInt32Array(0, 327680, 9, 1, 327680, 9, 2, 327680, 9, 3
 
 [node name="Cursor" parent="." instance=ExtResource("3_fd3sa")]
 
-[connection signal="animation" from="." to="UI/BattleUI" method="_on_game_scene_animation"]
 [connection signal="init_ui" from="." to="UI/BattleUI" method="_on_game_scene_init_ui"]
 [connection signal="next_action" from="." to="UI/BattleUI" method="_on_game_scene_next_action"]
 [connection signal="next_action" from="." to="Cursor" method="_on_game_scene_next_action"]
+[connection signal="phase_change" from="." to="UI/BattleUI" method="_on_game_scene_phase_change"]
 [connection signal="pos_changed" from="." to="UI/BattleUI" method="_on_player_moved"]
 [connection signal="atk_select" from="UI/BattleUI" to="." method="_on_battle_ui_atk_select"]
 [connection signal="cursor_select" from="UI/BattleUI" to="Cursor" method="_on_battle_ui_select"]
 [connection signal="move_select" from="UI/BattleUI" to="." method="_on_battle_ui_move_select"]
-[connection signal="show_cursor" from="UI/BattleUI" to="." method="_on_battle_ui_show_cursor"]
 [connection signal="accept_pressed" from="Cursor" to="UI/BattleUI" method="_on_cursor_accept_pressed"]

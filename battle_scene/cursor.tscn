@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b88g0ag87ye0e"]
+[gd_scene load_steps=6 format=3 uid="uid://b88g0ag87ye0e"]
 
 [ext_resource type="Script" path="res://battle_scene/Cursor.gd" id="1_2tqlt"]
 
@@ -9,11 +9,50 @@ load_path = "res://.godot/imported/fullset.png-4dcb75a9d0125de9c058c4d4f1bdeabc.
 atlas = SubResource("CompressedTexture2D_u3mdo")
 region = Rect2(512, 1440, 32, 32)
 
+[sub_resource type="Animation" id="Animation_s6c7l"]
+resource_name = "motion"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.3, 2, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0, -13.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.6, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u306"]
+_data = {
+"motion": SubResource("Animation_s6c7l")
+}
+
 [node name="Cursor" type="Node2D"]
 script = ExtResource("1_2tqlt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -0.5)
 texture = SubResource("AtlasTexture_2b7pm")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8u306")
+}
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
